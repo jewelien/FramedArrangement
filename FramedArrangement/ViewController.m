@@ -41,8 +41,9 @@
     [self.view addSubview:self.yellowView];
     
     [self layoutSquares];
-    [self layoutHorizontalRectangles];
-    [self layoutVerticalRectangles];
+//    [self layoutHorizontalRectangles];
+//    [self layoutVerticalRectangles];
+//    [self layoutDiagonalSquares];
     
 }
 
@@ -128,11 +129,32 @@
     
 }
 
-
+//red green blue yellow
 //4 squares arranged diagonally
 //Add a method called layoutDiagonalSquares
 //Calculate the width and height of the squares, the x and y of the each square
-
+- (void)layoutDiagonalSquares {
+    CGFloat screenWidth = self.view.frame.size.width;
+    CGFloat screenHeight = self.view.frame.size.height;
+    NSLog(@"Screen width is %f, screen height is %f.", screenWidth, screenHeight);
+    
+    //create a square shape.
+    float squareWidth = screenWidth*.25;
+    float squareHeight = screenHeight/8;
+    NSLog(@"Diagonal square width is %f, height is %f.", squareWidth, squareHeight);
+    
+    self.redView.frame = CGRectMake(0, 0, squareWidth, squareHeight);
+    self.greenView.frame = CGRectMake(squareWidth, squareHeight, squareWidth, squareHeight);
+    self.blueView.frame = CGRectMake(squareWidth * 2, squareHeight *2, squareWidth, squareHeight);
+    self.yellowView.frame = CGRectMake(squareWidth * 3, squareHeight * 3, squareWidth, squareHeight);
+    
+    //x and y of each square
+    NSLog(@"Red X is %f, Y is %f",self.redView.frame.origin.x, self.redView.frame.origin.y);
+    NSLog(@"Green X is %f, Y is %f", self.greenView.frame.origin.x, self.greenView.frame.origin.y);
+    NSLog(@"Blue X is %f, Y is %f", self.blueView.frame.origin.x, self.blueView.frame.origin.y);
+    NSLog(@"Yellow X is %f, Y is %f", self.yellowView.frame.origin.x, self.yellowView.frame.origin.y);
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -152,3 +174,4 @@
 */
 
 @end
+
