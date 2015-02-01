@@ -41,7 +41,7 @@
     [self.view addSubview:self.yellowView];
     
     [self layoutSquares];
-
+    [self layoutHorizontalRectangles];
     
 }
 
@@ -65,9 +65,9 @@
     self.blueView.frame = CGRectMake (0, squareHeight, squareWidth, squareHeight);
     self.yellowView.frame = CGRectMake(squareWidth, squareHeight, squareWidth, squareHeight);
     
-    int column2x = self.greenView.frame.origin.x;
-    int row2y = self.blueView.frame.origin.y;
-    NSLog(@"X of second column is %d. Y of second row is %d.", column2x, row2y);
+    float column2x = self.greenView.frame.origin.x;
+    float row2y = self.blueView.frame.origin.y;
+    NSLog(@"X of second column is %f. Y of second row is %f.", column2x, row2y);
 
 }
 
@@ -76,11 +76,29 @@
 //Add a method called layoutHorizontalRectangles
 //Calculate the width and height of the rectangles, and the y of each row
 - (void) layoutHorizontalRectangles {
+    CGFloat screenWidth = self.view.frame.size.width;
+    CGFloat screenHeight = self.view.frame.size.height;
+    NSLog(@"Screen width is %f, height is %f", screenWidth, screenHeight);
     
+    //create rectangle (width) and height size.
+    float rectangleHeight = screenHeight*.10;
+    NSLog(@"Rectangle width %f, height is %f", screenWidth, rectangleHeight);
+    
+    float startingY = screenHeight*.25;
+    
+    self.redView.frame = CGRectMake(0, startingY , screenWidth, rectangleHeight);
+    self.greenView.frame = CGRectMake(0, startingY + rectangleHeight, screenWidth, rectangleHeight);
+    self.blueView.frame = CGRectMake (0, self.greenView.frame.origin.y + rectangleHeight, screenWidth, rectangleHeight);
+    self.yellowView.frame = CGRectMake(0, self.blueView.frame.origin.y + rectangleHeight, screenWidth, rectangleHeight);
+    
+    //y of each row
+    float redY = self.redView.frame.origin.y;
+    float greenY = self.greenView.frame.origin.y;
+    float blueY = self.blueView.frame.origin.y;
+    float yellowY = self.yellowView.frame.origin.y;
+    NSLog(@"Y coordinate for each color: \n red-%f, green-%f, blue-%f, yellow, %f.", redY, greenY, blueY, yellowY);
+
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
