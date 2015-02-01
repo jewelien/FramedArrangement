@@ -42,6 +42,7 @@
     
     [self layoutSquares];
     [self layoutHorizontalRectangles];
+    [self layoutVerticalRectangles];
     
 }
 
@@ -58,7 +59,7 @@
     //create a size for the square width and height.
     float squareWidth = screenWidth*.25;
     float squareHeight = screenHeight/8;
-    NSLog(@"Square width is %f, height is %f.", squareWidth, squareHeight);
+    NSLog(@"Checkerboard square width is %f, height is %f.", squareWidth, squareHeight);
     
     self.redView.frame = CGRectMake(0, 0, squareWidth, squareHeight);
     self.greenView.frame = CGRectMake(squareWidth, 0, squareWidth, squareHeight);
@@ -80,9 +81,9 @@
     CGFloat screenHeight = self.view.frame.size.height;
     NSLog(@"Screen width is %f, height is %f", screenWidth, screenHeight);
     
-    //create rectangle (width) and height size.
+    //create rectangle height size. Width is screenWidth.
     float rectangleHeight = screenHeight*.10;
-    NSLog(@"Rectangle width %f, height is %f", screenWidth, rectangleHeight);
+    NSLog(@"Horizontal rectangle width %f, height is %f", screenWidth, rectangleHeight);
     
     float startingY = screenHeight*.25;
     
@@ -96,14 +97,49 @@
     float greenY = self.greenView.frame.origin.y;
     float blueY = self.blueView.frame.origin.y;
     float yellowY = self.yellowView.frame.origin.y;
-    NSLog(@"Y coordinate for each color: \n red-%f, green-%f, blue-%f, yellow, %f.", redY, greenY, blueY, yellowY);
+    NSLog(@"Y coordinate of each color. \n red:%f, green:%f, blue:%f, yellow:%f.", redY, greenY, blueY, yellowY);
 
 }
+
+
+//4 tall vertical rectangles
+//Add a method called layoutVerticalRectangles
+//Calculate the width and height of the rectangles, and the x of each column
+- (void)layoutVerticalRectangles {
+    CGFloat screenWidth = self.view.frame.size.width;
+    CGFloat screenHeight = self.view.frame.size.height;
+    NSLog(@"Screen width is %f, height is %f", screenWidth, screenHeight);
+    
+    //set width for the rectangles. height is screenHeight.
+    float rectWidth = screenWidth*.25;
+    NSLog(@"Vertical rectangle width is %f, height is %f.", rectWidth, screenHeight);
+    
+    self.redView.frame = CGRectMake(0, 0, rectWidth, screenHeight);
+    self.greenView.frame = CGRectMake(rectWidth, 0, rectWidth, screenHeight);
+    self.blueView.frame = CGRectMake (self.greenView.frame.origin.x + rectWidth, 0, rectWidth, screenHeight);
+    self.yellowView.frame = CGRectMake(self.blueView.frame.origin.x + rectWidth, 0, rectWidth, screenHeight);
+    
+    //x of each column
+    float redX = self.redView.frame.origin.x;
+    float greenX = self.greenView.frame.origin.x;
+    float blueX = self.blueView.frame.origin.x;
+    float yellowX = self.yellowView.frame.origin.x;
+    NSLog(@"X coordinate of each color. red:%f, green:%f, blue:%f, yellow:%f.", redX, greenX, blueX, yellowX);
+    
+}
+
+
+//4 squares arranged diagonally
+//Add a method called layoutDiagonalSquares
+//Calculate the width and height of the squares, the x and y of the each square
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
