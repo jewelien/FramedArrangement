@@ -20,7 +20,6 @@
 
 @implementation ViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -42,6 +41,22 @@
     [self.view addSubview:self.yellowView];
     
 }
+
+
+////4 squares like a checkerboard
+//Add a method called layoutSquares
+//Calculate the width and height of the squares, the x of the second column and y of the second row
+- (void)layoutSquares {
+    [self.redView setFrame:CGRectMake(0,0,50,50)];
+    
+    [self.yellowView setFrame:CGRectMake(self.redView.frame.origin.x + self.redView.frame.size.width , 0 , 50, 50)];
+    
+    [self.greenView setFrame:CGRectMake(0, self.redView.frame.origin.y + self.redView.frame.size.height , 50,50)];
+    
+    [self.blueView setFrame: CGRectMake(self.greenView.frame.origin.x +self.greenView.frame.size.width, 50, 50, 50)];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
