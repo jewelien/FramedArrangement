@@ -52,48 +52,32 @@
 - (void)layoutSquares {
     //calculate screen size.
     CGFloat screenWidth = self.view.frame.size.width;
-    NSLog(@"Screen width %f", screenWidth);
     CGFloat screenHeight = self.view.frame.size.height;
-    NSLog(@"Screen height %f", screenHeight);
+    NSLog(@"Screen width is %f, height is %f", screenWidth, screenHeight);
     
     //create a size for the square width and height.
     float squareWidth = screenWidth*.25;
     float squareHeight = screenHeight/8;
     NSLog(@"Square width is %f, height is %f.", squareWidth, squareHeight);
     
-    //create first red square.
     self.redView.frame = CGRectMake(0, 0, squareWidth, squareHeight);
-    //calculate red square's x and y.
-    float redX = self.redView.frame.origin.x;
-    float redY = self.redView.frame.origin.y;
-    NSLog(@"Red = X %f. Y %f", redX, redY);
-
-    //create green square.
     self.greenView.frame = CGRectMake(squareWidth, 0, squareWidth, squareHeight);
-    //calculate green square's x and y.
-    float greenX = self.greenView.frame.origin.x;
-    float greenY = self.greenView.frame.origin.y;
-    NSLog(@"Green = X %f. Y %f", greenX, greenY);
-    
     self.blueView.frame = CGRectMake (0, squareHeight, squareWidth, squareHeight);
-    float blueX = self.blueView.frame.origin.x;
-    float blueY = self.blueView.frame.origin.y;
-    NSLog(@"Blue = X %f. Y %f", blueX, blueY);
-    
     self.yellowView.frame = CGRectMake(squareWidth, squareHeight, squareWidth, squareHeight);
-    float yellowX = self.yellowView.frame.origin.x;
-    float yellowY = self.yellowView.frame.origin.y;
-    NSLog(@"Yellow = X %f. Y %f", yellowX, yellowY);
     
+    int column2x = self.greenView.frame.origin.x;
+    int row2y = self.blueView.frame.origin.y;
+    NSLog(@"X of second column is %d. Y of second row is %d.", column2x, row2y);
+
 }
 
 
 //4 flat horizontal rectangles stacked
 //Add a method called layoutHorizontalRectangles
 //Calculate the width and height of the rectangles, and the y of each row
-//- (void) layoutHorizontalRectangles {
-//    
-//}
+- (void) layoutHorizontalRectangles {
+    
+}
 
 
 
